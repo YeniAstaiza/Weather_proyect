@@ -2,29 +2,25 @@ import { useState } from "react";
 import useOpenWeather from "../hooks/useOpenWeather";
 
 const WeatherFrom = () => {
-    const [city, setCity] = useState("Medellín")
+    const [city, setCity] = useState("city")
     const [weatherData, error, loading] = useOpenWeather(city)
     console.log(weatherData)
 
-    return (
-        <div>
-            <input
-            type="text"
-            onKeyUp={(e) => {
-                if (e.key === 'Enter'){
-                    setCity(e.target.value)
-                }
-            }}
 
-            /*onkeyUp={(e) =>{
-                setCity(e.target.value)
-            }}
-            />
-             <button onClick={(e) => {
-                setCity(e.target.value)
-            }}>
-                Consultar
-            </button>*/ />
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log({city});
+        if(city === "" || !city) return;
+
+        
+    }
+
+    return (
+
+        
+        <div className="container">
+             
+           
 
             {loading && <p>Cargando...</p>}
             {error && <p>Hubo un error en la consulta</p>}

@@ -1,5 +1,5 @@
-export const fetchCountries =(authToken,state) => {
-    return fetch(`https://www.universal-tutorial.com/api/countries${state}`,{
+export const fetchCountries =(authToken,country) => {
+    return fetch(`https://www.universal-tutorial.com/api/countries${country}`,{
         method:'GET',
         headers:{
             Autorization: 'Bearer' + authToken,
@@ -7,8 +7,8 @@ export const fetchCountries =(authToken,state) => {
         }
     })
     .then(res => res.json())
-    .then(contriesData => {
-        return contriesData
+    .then(countriesData => {
+        return countriesData
     })
 }
 
@@ -21,13 +21,13 @@ export const fetchStates = (authToken,state) => {
         }
     })
     .then(res => res.json())
-    .then(citiesData => {
-        return citiesData
+    .then(stateData => {
+        return stateData
     })
 }
 
-export const fetchCities = (authToken,state) => {
-    return fetch(`https://www.universal-tutorial.com/api/cities${state}`,{
+export const fetchCities = (authToken,city) => {
+    return fetch(`https://www.universal-tutorial.com/api/cities${city}`,{
         method:'GET',
         headers:{
             Autorization: 'Bearer' + authToken,

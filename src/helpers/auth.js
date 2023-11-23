@@ -1,5 +1,5 @@
-export const FetchAccesToken = () =>{
-    return fetch("buscar la alicación https://www.universal-tutorial.com/",{
+export const fetchAccesToken = () =>{
+    return fetch("https://www.universal-tutorial.com/api/getaccesstoken",{
         method:'GET',
     headers:{
         Accept:'application/json',

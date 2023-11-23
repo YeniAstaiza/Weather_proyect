@@ -1,25 +1,49 @@
 import {useState, useEffect} from 'react'
 
 const useOpenWeather = (city) => {
-    const [weatherData,setWeatherData] = useState(null)
+    const [Weather,setWeather] = useState(null)
+    const [forecast, setForecast] = useState(null)
     const [error,setError] = useState(null)
-    const [loading, setLoadin] =useState(true)
-    const apikey = '93c10bb547be99bb56c79a1c8b3fcdb0'
+    const [loading, setLoading] =useState(true)
     
-    useEffect(()=> {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
-            .then(response => response.json())
-            .then(json => {
-                setLoadin(false)
-                setError(null)
-                setWeatherData(json)
-            })
-            .catch(error => {
-                    setWeatherData(null)
-                    setError(error)
-                })
-    },[city])
-    return[weatherData,error,loading]
+    const APIKEY = '93c10bb547be99bb56c79a1c8b3fcdb0'
+//funcion para obtener el clima actual
+const getWeather = () => {
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric`)
+    .then((response) => response.json())
+    .then((data) => setWeather(data))
+    .catch((error) => setError (error))
 }
 
+//funcion para obtener el pronostico clima 5 días. cada 3 horas
+const getForescast = () => {
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKEY}&units=metric`)
+    .then((response) => response.json())
+    .then((data) => setForecast(data))
+    .catch((error) => setError(error))
+}
+
+useEffect(() =>{
+  if (city){
+    getWeather()
+    getForescast()
+  }
+}, [city]) 
+    return[Weather,forecast,error,loading]
+}
 export default useOpenWeather
+
+
+{/*
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
+.then(response => response.json())
+.then(json => {
+    setLoadin(false)
+    setError(null)
+    setWeather(json)
+})
+.catch(error => {
+        setWeather(null)
+        setError(error)
+    })
+},[city])*/}
