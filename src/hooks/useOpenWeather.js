@@ -4,7 +4,7 @@ const useOpenWeather = (city) => {
     const [Weather,setWeather] = useState(null)
     const [forecast, setForecast] = useState(null)
     const [error,setError] = useState(null)
-    const [loading, setLoading] =useState(true)
+    const [loading, setLoading] =useState(false)
     
     const APIKEY = '93c10bb547be99bb56c79a1c8b3fcdb0'
 //funcion para obtener el clima actual
@@ -22,28 +22,16 @@ const getForescast = () => {
     .then((data) => setForecast(data))
     .catch((error) => setError(error))
 }
-
+ 
 useEffect(() =>{
   if (city){
+    setLoading(true)
     getWeather()
     getForescast()
+    setLoading(false)
   }
 }, [city]) 
-    return[Weather,forecast,error,loading]
+   
+return {Weather,forecast,error,loading}
 }
 export default useOpenWeather
-
-
-{/*
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
-.then(response => response.json())
-.then(json => {
-    setLoadin(false)
-    setError(null)
-    setWeather(json)
-})
-.catch(error => {
-        setWeather(null)
-        setError(error)
-    })
-},[city])*/}
