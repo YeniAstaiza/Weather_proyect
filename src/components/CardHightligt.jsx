@@ -4,7 +4,7 @@ const CardHighligt = (props) => {
 
     return(
         <div className=" bg-red-600">
-            <div className='grid grid-cols-2 grid-rows-2 gap-4 p-2 justify-items-center'>
+            <div className='grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4 p-2 justify-items-center'>
                 <div className=" w-60 h-40 p-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700  items-center ">
                     {props.loading  && <Spinner />} 
                     {!props.loading && props.weather && <>
