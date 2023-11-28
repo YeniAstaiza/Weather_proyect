@@ -32,7 +32,7 @@ function App() {
           </div>
           <div className='contenedorcards'>
           <div>
-            <CardDays weather={Weather} error={error} loading={loading}/>
+            <CardDays forecast={forecast} error={error} loading={loading}/>
           </div>
           <div className='contenedorinteres'>
             <div>
