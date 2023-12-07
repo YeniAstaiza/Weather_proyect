@@ -1,8 +1,5 @@
-import { useState } from "react";
-import useOpenWeather from "../hooks/useOpenWeather";
-import { GoSearch } from "react-icons/go";
 import { MdMyLocation } from "react-icons/md";
-
+import { limpiar } from "../helpers/functios";
 const Search = (props) => {
     const handleClick = () => {
         if (navigator.geolocation) {
@@ -23,14 +20,15 @@ const Search = (props) => {
     return (
         <div className="search flex space-x-10 p-4">
             <div className="search city ">
-                <form>
+                <form id="formulario">
                     <div className=" flex space-x-1">
                         <input
                             type="text"
                             placeholder='Enter city name'
                             onBlur={(e) => {props.setCity(e.target.value)
                                  props.setLon('') 
-                                 props.setLat('')}}
+                                 props.setLat('')
+                                return limpiar()}}
                             className=" w-40 h-10 text-center text-sm text-gray-900 border border-gray-300 rounded-lg bg-emerald-50 bg-opacity-75 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         />
                         {/*<button    

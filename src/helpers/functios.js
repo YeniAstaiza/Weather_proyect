@@ -18,11 +18,16 @@ const conversion = (celsius, temp) => {
         return `${Math.round((temp * 1.8) +32)} °F`
     }
 } 
+const limpiar = () => {
+    formulario.reset();
+    return false;
+}
 export {
     fecha,
     hora,
     minutos,
     segundos, 
-    conversion
+    conversion, 
+    limpiar,
 
 }

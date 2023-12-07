@@ -1,9 +1,5 @@
 import { FiMapPin } from "react-icons/fi";
-import { fecha, conversion } from "../helpers/functios";
-import { hora } from "../helpers/functios";
-import { minutos } from "../helpers/functios";
-import { segundos } from "../helpers/functios";
-
+import { fecha, conversion, hora, minutos, segundos } from "../helpers/functios";
 
 const GeneralInformation = (props) =>  {
   

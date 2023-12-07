@@ -6,7 +6,7 @@ import Units from './components/Units'
 import CardDays from './components/CardDays'
 import CardHighligt from './components/CardHightligt'
 import useOpenWeather from './hooks/useOpenWeather'
-/*import clear from '../public/images/clear.jpg'
+import clear from '../public/images/clear.jpg'
 import fewClouds from '../public/images/fewClouds.jpg'
 import scarettedCloudy from '../public/images/scatteredCloudy.jpg'
 import brokenClouds from '../public/images/brokenClouds.jpg'
@@ -14,45 +14,45 @@ import showerRain from '../public/images/showerRain.jpg'
 import rainy from '../public/images/rainy.jpg'
 import thunrderstorm from '../public/images/thunrderstorm.jpg'
 import snow from '../public/images/snow.jpg'
-import mist from '../public/images/mist.png'*/
+import mist from '../public/images/mist.png'
 function App() {
   const [city, setCity] = useState('')
   const [lat, setLat] = useState('')
   const [lon, setLon] = useState('')
   const[celsius, setCelsius] = useState(true)
   const {Weather,forecast, error,loading} = useOpenWeather(city,lat,lon)
- /* const [image, setImage] = useState(clear)
+  const [image, setImage] = useState(clear)
 
-  useEffect((props) => {
-    if (props.weather?.weather[0].description) {
-      let background = props.Weather?.weather[0].description
+  useEffect(() => {
+    if (Weather?.weather[0]?.description) {
+      let background = Weather.weather[0].description
       if (background.includes('clear sky')) {
         setImage(clear)
       } else if (background.includes('few clouds')) {
         setImage(fewClouds)
       } else if (background.includes('scattered clouds')) {
         setImage(scarettedCloudy)
-      } else if (background.includes('broken clouds')) {
+      } else if (background.includes('overcast clouds')|| background.includes('broken clouds')) {
         setImage(brokenClouds)
       } else if (background.includes('shower rain')) {
         setImage(showerRain)
-      } else if (background.includes('rain')) {
+      } else if (background.includes('rain') || background.includes('drizzle')) {
         setImage(rainy)
       } else if (background.includes('thunrderstorm')) {
         setImage(thunrderstorm)
-      } else if (background.includes('snow')) {
+      } else if (background.includes('snow') || background.includes('light snow')) {
         setImage(snow)
       } else if (background.includes('mist')) {
         setImage(mist)
       } 
     }
-  }, [image])/*
- /* style={{backgroundImage:'url("image")'}}*/
+  }, [JSON.stringify(Weather)])
+  
   return (
     <>
     <div 
       className="mx-auto bg-cover"
-    
+      style={{backgroundImage:`url("${image}")`}}
       >
 
       <div className='flex  flex-wrap p-4 space-x-4 '>
