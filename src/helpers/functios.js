@@ -11,10 +11,18 @@ const minutos = (dt) => {
 const segundos = (dt) => {
     return  new Date(dt * 1000).getSeconds('es-co', {timezone: 'UTC'})
 }
+const conversion = (celsius, temp) => {
+    if(celsius){
+        return `${Math.round(temp)} °C`;
+    } else {
+        return `${Math.round((temp * 1.8) +32)} °F`
+    }
+} 
 export {
     fecha,
     hora,
     minutos,
-    segundos
+    segundos, 
+    conversion
 
 }

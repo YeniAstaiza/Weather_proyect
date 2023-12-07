@@ -1,13 +1,12 @@
 import { FiMapPin } from "react-icons/fi";
-import { fecha } from "../helpers/functios";
+import { fecha, conversion } from "../helpers/functios";
 import { hora } from "../helpers/functios";
 import { minutos } from "../helpers/functios";
 import { segundos } from "../helpers/functios";
 
 
 const GeneralInformation = (props) =>  {
-    
-
+  
     return (
         <div className="p-4 flex flex-col items-center ">
             <div>
@@ -22,18 +21,18 @@ const GeneralInformation = (props) =>  {
             </div>
             <div className="flex">
             <p className=" text-6xl font-semibold text-gray-900 pb-2">
-                {props.weather?.main.temp && Math.round(props.weather?.main.temp)}{/*Puedes hacer este tipo de render condicional para que no te salga el NaN */}
+                {props.weather?.main.temp && conversion(props.celsius,props.weather?.main.temp)}{/*Puedes hacer este tipo de render condicional para que no te salga el NaN */}
             </p>
-            <p className=" text-3xl font-normal text-gray-800">°c</p>
+            <p className=" text-3xl font-normal text-gray-800"></p>
             </div>
             <p className=" text-xl font-normal text-gray-800 pb-8">
-                {props.weather?.weather[0].main} 
+                {props.weather?.weather[0].description} 
             </p>
             <div className="text-center">
             <p className=" text-x1 font-normal text-black-800 pb-1"> {props.weather?.dt && fecha(props.weather?.dt)}</p>
             <p className="text-xs font-normal text-black-800 pb-6"> {props.weather?.dt && hora(props.weather?.dt)} : {props.weather?.dt && minutos(props.weather?.dt)} : {props.weather?.dt && segundos(props.weather?.dt)}</p>
             </div>
-            <div className="flex">
+            <div className="flex" >
             <FiMapPin /> 
             <p className="text-xs font-normal text-black-800 pb-2">
                 {props.weather?.name}

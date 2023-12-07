@@ -4,7 +4,6 @@ import useOpenWeather from "../hooks/useOpenWeather";
 const WeatherFrom = () => {
     const [city, setCity] = useState("city")
     const [weatherData, error, loading] = useOpenWeather(city)
-    console.log(weatherData)
 
 
     const onSubmit = (e) => {
